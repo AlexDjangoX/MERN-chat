@@ -7,6 +7,7 @@ import userRoutes from './routes/userRoutes.js';
 const app = express();
 dotenv.config();
 connectDB();
+app.use(express.json());
 
 const PORT = process.env.PORT || 5001;
 
