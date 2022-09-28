@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
-import colors from 'colors';
 import userRoutes from './routes/userRoutes.js';
+import { notFound } from './middleware/errorMiddleware.js';
+import { errorHandler } from './middleware/errorMiddleware.js';
 
 const app = express();
 dotenv.config();
@@ -16,5 +17,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/user', userRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, console.log(`Server hot on PORT: ${PORT}`.yellow.italic));
