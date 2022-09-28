@@ -13,18 +13,18 @@ const SignUp = () => {
   const toast = useToast();
   const history = useHistory();
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [confirmpassword, setConfirmpassword] = useState();
-  const [password, setPassword] = useState();
-  const [pic, setPic] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [pic, setPic] = useState('');
   const [picLoading, setPicLoading] = useState(false);
 
   const submitHandler = async () => {
     setPicLoading(true);
-    if (!name || !email || !password || !confirmpassword) {
+    if (!name || !email || !password || !confirmPassword) {
       toast({
-        title: 'Please Fill all the Feilds',
+        title: 'Please Fill all the Fields',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -33,7 +33,7 @@ const SignUp = () => {
       setPicLoading(false);
       return;
     }
-    if (password !== confirmpassword) {
+    if (password !== confirmPassword) {
       toast({
         title: 'Passwords Do Not Match',
         status: 'warning',
@@ -73,7 +73,7 @@ const SignUp = () => {
       history.push('/chats');
     } catch (error) {
       toast({
-        title: 'Error Occured!',
+        title: 'Error Occurred!',
         description: error.response.data.message,
         status: 'error',
         duration: 5000,
@@ -85,6 +85,7 @@ const SignUp = () => {
   };
 
   const postDetails = (pics) => {
+    console.log('PICS : ', pics);
     setPicLoading(true);
     if (pics === undefined) {
       toast({
@@ -100,9 +101,9 @@ const SignUp = () => {
     if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
       const data = new FormData();
       data.append('file', pics);
-      data.append('upload_preset', 'chat-app');
-      data.append('cloud_name', 'piyushproj');
-      fetch('https://api.cloudinary.com/v1_1/piyushproj/image/upload', {
+      data.append('upload_preset', 'MERN-chat');
+      data.append('cloud_name', 'doom9h20x');
+      fetch('https://api.cloudinary.com/v1_1/doom9h20x/image/upload', {
         method: 'post',
         body: data,
       })
@@ -167,7 +168,7 @@ const SignUp = () => {
           <Input
             type={show ? 'text' : 'password'}
             placeholder='Confirm password'
-            onChange={(e) => setConfirmpassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <InputRightElement width='4.5rem'>
             <Button h='1.75rem' size='sm' onClick={handleClick}>
