@@ -11,8 +11,8 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
@@ -31,7 +31,6 @@ const Login = () => {
       return;
     }
 
-    // console.log(email, password);
     try {
       const config = {
         headers: {
@@ -45,7 +44,6 @@ const Login = () => {
         config
       );
 
-      // console.log(JSON.stringify(data));
       toast({
         title: 'Login Successful',
         status: 'success',
