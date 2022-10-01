@@ -1,10 +1,10 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware.js';
-import { accessChat } from '../controllers/chatControllers.js';
+import { accessChat, fetchChats } from '../controllers/chatControllers.js';
 const router = express.Router();
 
 router.post('/', protect, accessChat);
-// router.get('/', protect, fetchChats);
+router.get('/', protect, fetchChats);
 // router.post('/group', protect, createGroupChat);
 // router.put('/group-rename', protect, renameGroup);
 // router.put('/group-remove', protect, removeFromGroup);
