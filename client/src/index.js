@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { ChatProvider } from './context/chatContext';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -10,7 +11,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider>
-        <App />
+        <ChatProvider>
+          <App />
+        </ChatProvider>
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>
