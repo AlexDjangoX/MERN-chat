@@ -7,7 +7,7 @@ import { ChatContext } from '../context/chatContext';
 import { Box } from '@chakra-ui/react';
 
 const Chat = () => {
-  const { user, setUser } = useContext(ChatContext);
+  const { user } = useContext(ChatContext);
 
   return (
     <div style={{ width: '100%' }}>

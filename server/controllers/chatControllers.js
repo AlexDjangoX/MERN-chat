@@ -32,7 +32,7 @@ export const accessChat = asyncHandler(async (req, res) => {
   if (isChat.length > 0) {
     res.send(isChat[0]);
   } else {
-    var chatData = {
+    let chatData = {
       chatName: 'Hello sender sender',
       isGroupChat: false,
       users: [req.user._id, userId],
