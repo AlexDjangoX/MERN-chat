@@ -6,7 +6,7 @@ import { Box, Stack, Text } from '@chakra-ui/layout';
 import { useToast } from '@chakra-ui/toast';
 import axios from 'axios';
 import ChatLoading from './ChatLoading';
-
+import GroupChatModal from './GroupChatModal';
 import { Button } from '@chakra-ui/react';
 
 const MyChats = ({ fetchAgain }) => {
@@ -27,7 +27,6 @@ const MyChats = ({ fetchAgain }) => {
 
       const { data } = await axios.get('/api/chat', config);
       setChats(data);
-      console.log(chats);
     } catch (error) {
       toast({
         title: 'Error Occured!',
@@ -72,15 +71,15 @@ const MyChats = ({ fetchAgain }) => {
         alignItems='center'
       >
         My Chats
-        {/* <GroupChatModal> */}
-        <Button
-          d='flex'
-          fontSize={{ base: '17px', md: '10px', lg: '17px' }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
-        {/* </GroupChatModal> */}
+        <GroupChatModal>
+          <Button
+            d='flex'
+            fontSize={{ base: '17px', md: '10px', lg: '17px' }}
+            rightIcon={<AddIcon />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
       <Box
         display='flex'
