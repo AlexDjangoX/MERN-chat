@@ -8,6 +8,7 @@ import axios from 'axios';
 import ChatLoading from './ChatLoading';
 import GroupChatModal from './GroupChatModal';
 import { Button } from '@chakra-ui/react';
+import { getSender } from '../utils/chatLogic';
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
@@ -39,15 +40,11 @@ const MyChats = ({ fetchAgain }) => {
     }
   };
 
-  const getSender = (loggedUser, users) => {
-    return users[0]._id === loggedUser._id ? users[1].name : users[0].name;
-  };
-
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem('userInfo')));
     fetchChats();
     // eslint-disable-next-line
-  }, []);
+  }, [fetchAgain]);
 
   return (
     <Box
