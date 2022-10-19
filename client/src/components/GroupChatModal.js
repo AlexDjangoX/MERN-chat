@@ -45,8 +45,6 @@ const GroupChatModal = ({ children }) => {
     }
 
     setSelectedUsers([...selectedUsers, userToAdd]);
-    console.log('SEARCH RESULT : ', searchResult);
-    console.log('SELECTED : ', selectedUsers, userToAdd);
   };
 
   const handleSearch = async (query) => {
@@ -79,7 +77,6 @@ const GroupChatModal = ({ children }) => {
   };
 
   const deleteUser = (userToDelete) => {
-    console.log('userToDelete', userToDelete);
     setSelectedUsers(
       selectedUsers.filter((user) => user._id !== userToDelete._id)
     );
